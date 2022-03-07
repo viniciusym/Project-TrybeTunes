@@ -5,6 +5,7 @@ import Search from './pages/Search';
 import Album from './pages/Album';
 import Favorites from './pages/Favorites';
 import Profile from './pages/Profile';
+import ProfileEdit from './pages/ProfileEdit';
 
 class App extends React.Component {
   render() {
@@ -12,6 +13,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route path="/album/:id" render={ () => <Album /> } />
+          <Route path="/profile/edit" render={ () => <ProfileEdit /> } />
           <Route path="/profile" render={ () => <Profile /> } />
           <Route path="/favorites" render={ () => <Favorites /> } />
           <Route path="/search" render={ () => <Search /> } />
