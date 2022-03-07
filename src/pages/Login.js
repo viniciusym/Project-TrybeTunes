@@ -1,4 +1,5 @@
 import React from 'react';
+import { createUser } from '../services/userAPI';
 
 class Login extends React.Component {
   constructor(props) {
@@ -35,6 +36,9 @@ class Login extends React.Component {
           <label htmlFor="login">
             <input
               disabled={ name.length < minNameLength }
+              onClick={ () => createUser({
+                name,
+              }) }
               type="button"
               value="Entrar"
               id="login"
