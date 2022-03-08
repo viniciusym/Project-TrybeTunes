@@ -37,15 +37,14 @@ class Album extends React.Component {
         <h3 data-testid="artist-name">{ artistName }</h3>
         <h2 data-testid="album-name">{ albumName }</h2>
         { musics.map((music) => {
-          const { trackName, previewUrl } = music;
+          const { trackId } = music;
           if (music.previewUrl === undefined) {
             return null;
           }
           return (
             <MusicCard
-              trackName={ trackName }
-              previewUrl={ previewUrl }
-              key={ trackName }
+              music={ music }
+              key={ trackId }
             />);
         })}
       </div>
