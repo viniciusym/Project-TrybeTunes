@@ -15,6 +15,7 @@ class MusicCard extends React.Component {
   }
 
   loadingState(music) {
+    const { updateData } = this.props;
     this.setState({
       loading: true,
     }, (async () => {
@@ -27,7 +28,7 @@ class MusicCard extends React.Component {
       }
       this.setState({
         loading: false,
-      });
+      }, () => updateData());
     }
     ));
   }
@@ -69,6 +70,11 @@ MusicCard.propTypes = {
     trackId: PropTypes.number.isRequired,
   }).isRequired,
   checked: PropTypes.bool.isRequired,
+  updateData: PropTypes.func,
+};
+
+MusicCard.defaultProps = {
+  updateData: () => null,
 };
 
 export default MusicCard;
