@@ -45,7 +45,7 @@ class Search extends React.Component {
     const { search, loading, isSearchReady, searchedName, albums } = this.state;
     return (
       <div className="page-search" data-testid="page-search">
-        <Header />
+        <Header currentPage="search" />
         { loading ? <Loading /> : (
           <form>
             <label htmlFor="search">

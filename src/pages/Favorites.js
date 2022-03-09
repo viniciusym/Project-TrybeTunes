@@ -36,7 +36,7 @@ class Favorites extends React.Component {
     const { loading, favoritedSongs } = this.state;
     return (
       <div>
-        <Header />
+        <Header currentPage="favorites" />
         { loading ? <Loading /> : (
           <div className="page-favorites" data-testid="page-favorites">
             { favoritedSongs.map((song) => (

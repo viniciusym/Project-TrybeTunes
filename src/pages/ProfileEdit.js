@@ -91,7 +91,7 @@ class ProfileEdit extends React.Component {
     return (
       logged ? <Redirect to="/profile" /> : (
         <div className="page-profile-edit" data-testid="page-profile-edit">
-          <Header />
+          <Header currentPage="profile" />
           { loading ? <Loading /> : (
             <form>
               <label htmlFor="name">

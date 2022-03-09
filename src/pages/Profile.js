@@ -41,7 +41,7 @@ class Profile extends React.Component {
     const { loading, user: { description, name, image, email } } = this.state;
     return (
       <div className="page-profile" data-testid="page-profile">
-        <Header />
+        <Header currentPage="profile" />
         { loading ? <Loading /> : (
           <div>
             <img src={ image } alt={ name } data-testid="profile-image" />

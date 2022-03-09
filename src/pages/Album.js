@@ -58,7 +58,7 @@ class Album extends React.Component {
     } = this.state;
     return (loading ? <Loading /> : (
       <div className="page-album" data-testid="page-album">
-        <Header />
+        <Header currentPage="search" />
         <h3 data-testid="artist-name">{ artistName }</h3>
         <h2 data-testid="album-name">{ albumName }</h2>
         { musics.map((music) => {
