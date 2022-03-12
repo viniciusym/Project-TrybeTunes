@@ -32,6 +32,7 @@ class Album extends React.Component {
       albumData: {
         artistName: response[0].artistName,
         albumName: response[0].collectionName,
+        albumCover: response[0].artworkUrl100,
       },
     });
   }
@@ -41,7 +42,6 @@ class Album extends React.Component {
       loading: true,
     }, async () => {
       const data = await getFavoriteSongs();
-      console.log(await data);
       this.setState({
         loading: false,
         favoritedMusics: [...await data],
@@ -52,27 +52,36 @@ class Album extends React.Component {
   render() {
     const {
       musics,
-      albumData: { artistName, albumName },
+      albumData: { artistName, albumName, albumCover },
       loading,
       favoritedMusics,
     } = this.state;
     return (loading ? <Loading /> : (
       <div className="page-album" data-testid="page-album">
         <Header currentPage="search" />
-        <h3 data-testid="artist-name">{ artistName }</h3>
-        <h2 data-testid="album-name">{ albumName }</h2>
-        { musics.map((music) => {
-          const { trackId } = music;
-          if (music.previewUrl === undefined) {
-            return null;
-          }
-          return (
-            <MusicCard
-              checked={ favoritedMusics.some((song) => song.trackId === music.trackId) }
-              music={ music }
-              key={ trackId }
-            />);
-        })}
+        <div className="album-page">
+          <div className="album-info">
+            <img src={ albumCover } alt="" />
+            <h2 data-testid="album-name">{ albumName }</h2>
+            <h3 data-testid="artist-name">{ artistName }</h3>
+          </div>
+          <div className="music-list">
+            { musics.map((music) => {
+              const { trackId } = music;
+              if (music.previewUrl === undefined) {
+                return null;
+              }
+              return (
+                <MusicCard
+                  checked={ favoritedMusics
+                    .some((song) => song.trackId === music.trackId) }
+                  music={ music }
+                  key={ trackId }
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     )
     );

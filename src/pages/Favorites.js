@@ -39,13 +39,18 @@ class Favorites extends React.Component {
         <Header currentPage="favorites" />
         { loading ? <Loading /> : (
           <div className="page-favorites" data-testid="page-favorites">
+            <h3>Músicas favoritas:</h3>
             { favoritedSongs.map((song) => (
-              <MusicCard
-                updateData={ this.getFavSongsData }
-                music={ song }
-                checked
-                key={ song.trackId }
-              />)) }
+              <div key={ song.trackName } className="favorite-music-card">
+                <img src={ song.artworkUrl100 } alt="" />
+                <MusicCard
+                  updateData={ this.getFavSongsData }
+                  music={ song }
+                  checked
+                  key={ song.trackId }
+                />
+              </div>
+            )) }
           </div>
         )}
       </div>

@@ -11,11 +11,14 @@ class AlbumCard extends React.Component {
       <Link
         to={ `/album/${collectionId}` }
         data-testid={ `link-to-album-${collectionId}` }
+        className="album-card-div-link"
       >
-        <div>
+        <div className="album-card">
           <img src={ artworkUrl100 } alt={ collectionName } />
-          <h3>{ collectionName }</h3>
-          <p>{ artistName }</p>
+          <div className="text-album-card">
+            <h3>{ collectionName }</h3>
+            <p>{ artistName }</p>
+          </div>
         </div>
       </Link>
     );

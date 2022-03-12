@@ -46,39 +46,46 @@ class Search extends React.Component {
     return (
       <div className="page-search" data-testid="page-search">
         <Header currentPage="search" />
-        { loading ? <Loading /> : (
-          <form>
-            <label htmlFor="search">
-              <input
-                type="text"
-                name="search"
-                id="search"
-                data-testid="search-artist-input"
-                onChange={ this.handleChange }
-              />
-            </label>
-            <button
-              type="reset"
-              disabled={ search.length < 2 }
-              value="Pesquisar"
-              name="searchButton"
-              id="searchButtom"
-              data-testid="search-artist-button"
-              onClick={ this.getAlbums }
-            >
-              Pesquisar
-            </button>
-          </form>
-        )}
-        { isSearchReady && (
-          <h2>
-            {`Resultado de álbuns de: ${searchedName}`}
-          </h2>
-        )}
-        { albums.length === 0 ? <h2>Nenhum álbum foi encontrado</h2> : (
-          albums
-            .map((album) => <AlbumCard album={ album } key={ album.collectionId } />)
-        )}
+        <div className="search-content">
+          { loading ? <Loading /> : (
+            <form>
+              <label htmlFor="search">
+                <input
+                  className="search-text-input"
+                  type="text"
+                  name="search"
+                  id="search"
+                  data-testid="search-artist-input"
+                  placeholder="Nome do artista"
+                  onChange={ this.handleChange }
+                />
+              </label>
+              <button
+                className="search-button"
+                type="reset"
+                disabled={ search.length < 2 }
+                value="Pesquisar"
+                name="searchButton"
+                id="searchButtom"
+                data-testid="search-artist-button"
+                onClick={ this.getAlbums }
+              >
+                Pesquisar
+              </button>
+            </form>
+          )}
+          { isSearchReady && (
+            <h2>
+              {`Resultado de álbuns de: ${searchedName}`}
+            </h2>
+          )}
+          <div className="search-result">
+            { albums.length === 0 ? <h2>Nenhum álbum foi encontrado</h2> : (
+              albums
+                .map((album) => <AlbumCard album={ album } key={ album.collectionId } />)
+            )}
+          </div>
+        </div>
       </div>
     );
   }

@@ -37,27 +37,30 @@ class MusicCard extends React.Component {
     const { music: { previewUrl, trackName, trackId }, music, checked } = this.props;
     const { loading } = this.state;
     return (
-      <div className="music-list">
-        <p>{ trackName }</p>
-        { loading ? <Loading /> : (
-          <audio data-testid="audio-component" src={ previewUrl } controls>
-            <track kind="captions" />
-            O seu navegador não suporta o elemento
-            <code>audio</code>
-            .
-          </audio>
-        )}
-        <label htmlFor="favoriteSong">
-          Favorita
-          <input
-            type="checkbox"
-            name="favoriteSong"
-            id="favoriteSong"
-            data-testid={ `checkbox-music-${trackId}` }
-            onClick={ () => this.loadingState(music) }
-            defaultChecked={ checked }
-          />
-        </label>
+      <div>
+        <div className="music-card">
+          <div className="music-name">{ trackName }</div>
+          { loading ? <Loading /> : (
+            <audio data-testid="audio-component" src={ previewUrl } controls>
+              <track kind="captions" />
+              O seu navegador não suporta o elemento
+              <code>audio</code>
+              .
+            </audio>
+          )}
+          <label htmlFor="favoriteSong">
+            Favorita
+            <input
+              type="checkbox"
+              name="favoriteSong"
+              id="favoriteSong"
+              data-testid={ `checkbox-music-${trackId}` }
+              onClick={ () => this.loadingState(music) }
+              defaultChecked={ checked }
+            />
+          </label>
+        </div>
+        <div className="break-line" />
       </div>
     );
   }
