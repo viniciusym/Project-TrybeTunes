@@ -51,10 +51,12 @@ class Login extends React.Component {
                   id="name"
                   onChange={ this.handleChange }
                   data-testid="login-name-input"
+                  placeholder="Nome"
                 />
               </label>
               <label htmlFor="login">
                 <input
+                  className="login-button"
                   disabled={ name.length < minNameLength }
                   onClick={ this.creactUser }
                   type="button"

@@ -93,8 +93,20 @@ class ProfileEdit extends React.Component {
         <div className="page-profile-edit" data-testid="page-profile-edit">
           <Header currentPage="profile" />
           { loading ? <Loading /> : (
-            <form>
-              <label htmlFor="name">
+            <form className="profile-page">
+              <label htmlFor="image" className="profile-block">
+                <img src={ image } alt={ name } />
+                <input
+                  type="text"
+                  id="image"
+                  name="image"
+                  value={ image }
+                  onChange={ this.handleUserChange }
+                  data-testid="edit-input-image"
+                  placeholder="Url da imagem"
+                />
+              </label>
+              <label htmlFor="name" className="profile-block">
                 Nome
                 <input
                   type="text"
@@ -105,7 +117,7 @@ class ProfileEdit extends React.Component {
                   data-testid="edit-input-name"
                 />
               </label>
-              <label htmlFor="email">
+              <label htmlFor="email" className="profile-block">
                 E-mail
                 <input
                   type="text"
@@ -116,7 +128,7 @@ class ProfileEdit extends React.Component {
                   data-testid="edit-input-email"
                 />
               </label>
-              <label htmlFor="description">
+              <label htmlFor="description" className="profile-block">
                 Descrição
                 <input
                   type="text"
@@ -125,18 +137,6 @@ class ProfileEdit extends React.Component {
                   value={ description }
                   onChange={ this.handleUserChange }
                   data-testid="edit-input-description"
-                />
-              </label>
-              <label htmlFor="image">
-                <img src={ image } alt={ name } />
-                Imagem de perfil
-                <input
-                  type="text"
-                  id="image"
-                  name="image"
-                  value={ image }
-                  onChange={ this.handleUserChange }
-                  data-testid="edit-input-image"
                 />
               </label>
               <label htmlFor="save">
