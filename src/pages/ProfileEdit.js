@@ -146,6 +146,7 @@ class ProfileEdit extends React.Component {
                   value="save"
                   name="save"
                   id="save"
+                  className="save-edit"
                   data-testid="edit-button-save"
                   onClick={ this.updateUserData }
                 />
